@@ -36,6 +36,11 @@ header{
     display: block;
   }
   
+  #close-image img {
+    display: block;
+    height: 30px;  
+    width: 30px;
+}
 
   
   .dropdown:hover .dropdown-content {display: block;}
