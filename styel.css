@@ -36,19 +36,27 @@ header{
     display: block;
   }
   
-  #Css_mode img {
-    display: block;
-    height: 30px;  
-    width: 30px;
-}
+
 
   
   .dropdown:hover .dropdown-content {display: block;}
-:root {
-  color-scheme: light dark;
-}
+
   
   .dropbtn:hover {
     background-color: rgba(0, 0, 0, 0.25); color: white;}
   .dropdown-content a:hover{
     background-color: rgba(0,0,0,0.3);}
+
+:root {
+  color-scheme: light dark;
+}
+
+.mod:hover{
+  content: url('/imigas/sun-3337.png');
+}
+
+#Css_mode img {
+  display: block;
+  height: 30px;  
+  width: 30px;
+}
