@@ -8,6 +8,9 @@ header{
     justify-content: space-between;
     flex-direction: row;
 
+    <div id="right topbar">
+  
+
 }
 .dropbtn {
     padding: 16px;
@@ -62,4 +65,10 @@ header{
   height: 30px;  
   width: 30px;
   margin: 5px;
+}
+
+#right-topbar {
+  width: 150;
+  height: auto;
+  display: inline-block;
 }
