@@ -44,4 +44,7 @@ header{
 
   
   .dropdown:hover .dropdown-content {display: block;}
+:root {
+  color-scheme: light dark;
+}
   
