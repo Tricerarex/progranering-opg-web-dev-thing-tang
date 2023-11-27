@@ -45,3 +45,7 @@ header{
   
   .dropdown:hover .dropdown-content {display: block;}
   
+  .dropbtn:hover {
+    background-color: rgba(0, 0, 0, 0.25); color: white;}
+  .dropdown-content a:hover{
+    background-color: rgba(0,0,0,0.3);}
