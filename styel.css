@@ -7,6 +7,7 @@ header{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    align-items: center;
   
 
 }
@@ -67,5 +68,6 @@ header{
 #right-topbar {
   width: 150;
   height: auto;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
