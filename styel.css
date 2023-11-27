@@ -37,7 +37,9 @@ header{
   }
   
 
-
+  .dropbtn{
+    padding: 0px;
+  }
   
   .dropdown:hover .dropdown-content {display: block;}
 
@@ -51,7 +53,7 @@ header{
   color-scheme: light dark;
 }
 
-.mod:hover{
+#mode:hover{
   content: url('/imigas/sun-3337.png');
 }
 
@@ -59,4 +61,5 @@ header{
   display: block;
   height: 30px;  
   width: 30px;
+  margin: 5px;
 }
