@@ -52,9 +52,6 @@ header{
   .dropdown-content a:hover{
     background-color: rgba(0,0,0,0.3);}
 
-:root {
-  color-scheme: light dark;
-}
 
 #mode:hover{
   content: url('/imigas/sun-3337.png');
@@ -72,4 +69,15 @@ header{
   height: auto;
   display: flex;
   align-items: center;
+}
+
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.light-mode {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
