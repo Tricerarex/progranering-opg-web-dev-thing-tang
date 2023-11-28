@@ -86,3 +86,32 @@ footer{
 }
 
 
+
+
+
+
+
+
+
+
+body {
+  background-color: rgb(31, 31, 31);
+  color: rgb(250, 250, 250);
+}
+
+.light-mode {
+  background-color: rgb(250, 250, 250);
+  color: rgb(31, 31, 31);
+}
+.light-mode a {
+  color: rgb(31, 31, 31);
+}
+.mode-dark:hover{
+  content: url('/imigas/sun-3337.png');
+}
+.mode-light{
+ content: url('/imigas/sun-3337.png');
+}
+.mode-light:hover{
+  content: url('/imigas/vecteezy_creshcent-moon-icon_21815393.png'); 
+}
