@@ -11,6 +11,10 @@ header{
     padding: 6px 0px;
 
 }
+h1 a {
+  color: white;
+  text-decoration: none;
+}
 
 main{
   min-height: 750px;

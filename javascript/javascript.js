@@ -15,3 +15,4 @@ function mode_controle(){
     icon.classList.toggle("mode-light");
     body.classList.toggle("light-mode");
 }
+
