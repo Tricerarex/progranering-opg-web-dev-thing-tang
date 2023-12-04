@@ -17,12 +17,13 @@ h1 a {
 }
 
 main{
-  min-height: 750px;
+  min-height: 450px;
 }
   
 footer{
   background-color: grey;
   display: flex;
+  
   justify-content: center;
   flex-direction: row;
   align-items: center;
