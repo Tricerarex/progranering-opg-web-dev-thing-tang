@@ -13,11 +13,9 @@ var sprite = {
     width: 50,
     height: 50,
     jumpForce: 20,
-    image: new Image()
+    image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
 };
 
-// Load the sprite image
-sprite.image.src = 'path_to_your_sprite_image.png';
 
 // Update the sprite object
 function update() {
