@@ -13,7 +13,11 @@ var sprite = {
     width: 50,
     height: 50,
     jumpForce: 20,
+    image: new Image()
 };
+
+// Load the sprite image
+sprite.image.src = 'path_to_your_sprite_image.png';
 
 // Update the sprite object
 function update() {
@@ -29,8 +33,7 @@ function update() {
 // Draw the sprite object
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'red';
-    ctx.fillRect(sprite.x, sprite.y, sprite.width, sprite.height);
+    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 }
 
 // Jump when spacebar is pressed
