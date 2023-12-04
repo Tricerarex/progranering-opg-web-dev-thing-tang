@@ -1,21 +1,54 @@
-function startGame() {
-  myGameArea.start();
-  myGamePiece = new component(30, 30, "red", 10, 120);
+// Get the canvas element
+var canvas = document.getElementById('Game-window');
+var ctx = canvas.getContext('2d');
+
+// Set the gravity
+var gravity = 1;
+
+// Define the sprite object
+var sprite = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    dy: 0,
+    width: 50,
+    height: 50,
+    jumpForce: 20,
+    image: new Image()
+};
+
+// Load the sprite image
+sprite.image.src = '/imigas/sun-3337';
+
+// Update the sprite object
+function update() {
+    sprite.dy += gravity;
+    sprite.y += sprite.dy;
+
+    if (sprite.y + sprite.height > canvas.height) {
+        sprite.y = canvas.height - sprite.height;
+        sprite.dy = 0;
+    }
 }
 
-var myGameArea = {
-  canvas : document.getElementById("Game-Window"),
-  start : function() {
-    this.context = this.canvas.getContext("2d");
-  }
+// Draw the sprite object
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 }
 
-function component(width, height, color, x, y) {
-  this.width = width;
-  this.height = height;
-  this.x = x;
-  this.y = y;
-  ctx = myGameArea.context;
-  ctx.fillStyle = color;
-  ctx.fillRect(this.x, this.y, this.width, this.height);
+// Jump when spacebar is pressed
+window.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+        sprite.dy = -sprite.jumpForce;
+    }
+});
+
+// Game loop
+function loop() {
+    update();
+    draw();
+    requestAnimationFrame(loop);
 }
+
+// Start the game loop
+loop();
