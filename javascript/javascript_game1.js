@@ -1,5 +1,7 @@
 // Get the canvas element
 var canvas = document.getElementById('Game-window');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 var ctx = canvas.getContext('2d');
 
 // Set the gravity
@@ -16,8 +18,11 @@ var sprite = {
     image: new Image()
 };
 
-// Load the sprite image
-sprite.image.src = 'path_to_your_sprite_image.png';
+sprite.image.onload = function() {
+    // Image has been loaded, now you can draw it
+    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
+};
+sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
 
 // Update the sprite object
 function update() {
