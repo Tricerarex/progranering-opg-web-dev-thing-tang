@@ -15,7 +15,7 @@ var sprite = {
     width: 50,
     height: 50,
     jumpForce: 20,
-    image: new Image()
+    image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
 };
 
 sprite.image.onload = function() {
