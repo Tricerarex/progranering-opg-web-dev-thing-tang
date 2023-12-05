@@ -1,8 +1,16 @@
 canvas{
 
-    width: 50vw;
-    height: 25vh;
-    padding: 200px;
+    width: 80%;
+    height: 80%;
+    margin: 20px;
     border: grey 3px solid;
     border-radius: 5%;
+}
+main{
+
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
 }
