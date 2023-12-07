@@ -11,7 +11,7 @@ var gravity = 1;
 
 // Define the sprite object
 var sprite = {
-    x: canvas.width / 2,
+    x: canvas.width / 4,
     y: canvas.height / 2,
     dy: 0,
     width: 50,
@@ -22,6 +22,8 @@ var sprite = {
 
 sprite.image.onload = function() {
     // Image has been loaded, now you can draw it
+    ctx.fillstyle = "green"
+    ctx.fillrect(sprite.x, sprite.y, sprite.width, sprite.height)
     ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
 sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
