@@ -24,6 +24,14 @@ var sprite = {
     image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
 };
 
+
+function drawObstacles() {
+    for (var i = 0; i < obstacles.length; i++) {
+        var obstacle = obstacles[i];
+        context.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    }
+}
+
 setInterval(function() {
     var obstacle = {
         x: canvas.width,
@@ -35,6 +43,7 @@ setInterval(function() {
 }, 1000);
 
 function updateObstacles() {
+    console.log(obstacles);
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
         obstacle.x -= 5; // Adjust speed here
@@ -76,21 +85,15 @@ window.addEventListener('keydown', function(e) {
     }
 });
 
-function drawObstacles() {
-    for (var i = 0; i < obstacles.length; i++) {
-        var obstacle = obstacles[i];
-        context.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-    }
-}
-
 
 
 // Game loop
+// Update the game loop
 function loop() {
     update();
     updateObstacles();
-    drawObstacles();
     draw();
+    drawObstacles();
     requestAnimationFrame(loop);
 }
 
