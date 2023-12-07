@@ -83,7 +83,7 @@ window.addEventListener('keydown', function(e) {
     if (e.code === 'Space') {
         sprite.dy = -sprite.jumpForce;
     }
-});
+}); 
 
 
 
