@@ -1,4 +1,8 @@
 
+// Define the obstacles array
+var obstacles = [];
+
+
 // Get the canvas element
 var canvas = document.getElementById('Game-window');
 canvas.width = window.innerWidth;
@@ -20,10 +24,30 @@ var sprite = {
     image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
 };
 
+setInterval(function() {
+    var obstacle = {
+        x: canvas.width,
+        y: Math.random() * (canvas.height - 100),
+        width: 50,
+        height: 50
+    };
+    obstacles.push(obstacle);
+}, 1000);
+
+function updateObstacles() {
+    for (var i = 0; i < obstacles.length; i++) {
+        var obstacle = obstacles[i];
+        obstacle.x -= 5; // Adjust speed here
+
+        // Remove the obstacle if it's off screen
+        if (obstacle.x + obstacle.width < 0) {
+            obstacles.splice(i, 1);
+            i--;
+        }
+    }
+}
+
 sprite.image.onload = function() {
-    // Image has been loaded, now you can draw it
-    context.fillstyle = "green"
-    context.fillrect(sprite.x, sprite.y, sprite.width, sprite.height)
     context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
 sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
@@ -62,7 +86,12 @@ window.addEventListener('keydown', function(e) {
     }
 });
 
-
+function drawObstacles() {
+    for (var i = 0; i < obstacles.length; i++) {
+        var obstacle = obstacles[i];
+        context.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    }
+}
 top_pipe_img = new Image();
 top_pipe_img.src = "imigas\watercolor-green-seaweed-png.webp"
 
@@ -70,6 +99,8 @@ top_pipe_img.src = "imigas\watercolor-green-seaweed-png.webp"
 // Game loop
 function loop() {
     update();
+    updateObstacles();
+    drawObstacles();
     draw();
     requestAnimationFrame(loop);
 }
