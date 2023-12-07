@@ -39,6 +39,16 @@ function update() {
     }
 }
 
+//pipe's
+let pipeArray = [];
+let pipeWidth =20
+let pipehigth = 50
+
+let top_pipe_img ;
+let bottom_pipe_img;
+
+
+
 // Draw the sprite object
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -53,7 +63,8 @@ window.addEventListener('keydown', function(e) {
 });
 
 
-
+top_pipe_img = new Image();
+top_pipe_img.src = "imigas\watercolor-green-seaweed-png.webp"
 
 
 // Game loop
