@@ -72,6 +72,16 @@ function update() {
     }
 }
 
+//pipe's
+let pipeArray = [];
+let pipeWidth =20
+let pipehigth = 50
+
+let top_pipe_img ;
+let bottom_pipe_img;
+
+
+
 // Draw the sprite object
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
