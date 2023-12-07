@@ -11,36 +11,43 @@ var context = canvas.getContext('2d');
 
 
 // Set the gravity
-var gravity = 1;
+var gravity = 0.25;
 
-// Define the sprite object
+// Define the sprie object
 var sprite = {
     x: canvas.width / 4,
     y: canvas.height / 2,
     dy: 0,
     width: 50,
     height: 50,
-    jumpForce: 20,
+    jumpForce: 7,
     image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
 };
 
 
 function drawObstacles() {
+    context.fillStyle = 'red';
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
-        context.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        context.drawImage(obstacle.image, obstacle.x, obstacle.y, obstacle.width, obstacle.height)
     }
 }
 
 setInterval(function() {
+    var minHeight = 125; // Set this to your desired minimum height
+    var maxHeight = 500; // Set this to your desired maximum height
     var obstacle = {
         x: canvas.width,
-        y: Math.random() * (canvas.height - 100),
-        width: 50,
-        height: 50
+        y: minHeight + Math.random() * (maxHeight - minHeight),
+        width: 100,
+        height: 500,
+        image: new Image()
     };
+    obstacle.image.src = '/imigas/watercolor-green-seaweed-png.webp';  
     obstacles.push(obstacle);
 }, 1000);
+
+
 
 function updateObstacles() {
     console.log(obstacles);
