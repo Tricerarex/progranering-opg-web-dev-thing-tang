@@ -48,9 +48,6 @@ function updateObstacles() {
 }
 
 sprite.image.onload = function() {
-    // Image has been loaded, now you can draw it
-    context.fillstyle = "green"
-    context.fillrect(sprite.x, sprite.y, sprite.width, sprite.height)
     context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
 sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
