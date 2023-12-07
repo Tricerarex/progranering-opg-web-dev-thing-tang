@@ -1,15 +1,17 @@
+
 // Get the canvas element
 var canvas = document.getElementById('Game-window');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-var ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
+
 
 // Set the gravity
 var gravity = 1;
 
 // Define the sprite object
 var sprite = {
-    x: canvas.width / 2,
+    x: canvas.width / 4,
     y: canvas.height / 2,
     dy: 0,
     width: 50,
@@ -20,7 +22,9 @@ var sprite = {
 
 sprite.image.onload = function() {
     // Image has been loaded, now you can draw it
-    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
+    context.fillstyle = "green"
+    context.fillrect(sprite.x, sprite.y, sprite.width, sprite.height)
+    context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
 sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
 
@@ -37,8 +41,8 @@ function update() {
 
 // Draw the sprite object
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 }
 
 // Jump when spacebar is pressed
@@ -47,6 +51,10 @@ window.addEventListener('keydown', function(e) {
         sprite.dy = -sprite.jumpForce;
     }
 });
+
+
+
+
 
 // Game loop
 function loop() {
