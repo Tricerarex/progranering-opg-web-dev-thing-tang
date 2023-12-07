@@ -1,8 +1,10 @@
+
 // Get the canvas element
 var canvas = document.getElementById('Game-window');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var ctx = canvas.getContext('2d');
+
 
 // Set the gravity
 var gravity = 1;
@@ -47,6 +49,10 @@ window.addEventListener('keydown', function(e) {
         sprite.dy = -sprite.jumpForce;
     }
 });
+
+
+
+
 
 // Game loop
 function loop() {
