@@ -3,7 +3,7 @@
 var canvas = document.getElementById('Game-window');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-var ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
 
 
 // Set the gravity
@@ -22,9 +22,9 @@ var sprite = {
 
 sprite.image.onload = function() {
     // Image has been loaded, now you can draw it
-    ctx.fillstyle = "green"
-    ctx.fillrect(sprite.x, sprite.y, sprite.width, sprite.height)
-    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
+    context.fillstyle = "green"
+    context.fillrect(sprite.x, sprite.y, sprite.width, sprite.height)
+    context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
 sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
 
@@ -41,8 +41,8 @@ function update() {
 
 // Draw the sprite object
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 }
 
 // Jump when spacebar is pressed
