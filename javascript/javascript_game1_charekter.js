@@ -132,60 +132,7 @@ window.addEventListener('keydown', function(e) {
     }
 }); 
 
-var ctx = document.querySelector('canvas').getContext('2d');
 
-
-
-// The rotation angle of the bird, in radians
-var sprieAngle = 0;
-
-// Function to draw the bird
-function rotatesprite() {
-    ctx.save(); // save the current state of the context
-
-    // Translate to the bird's position
-    ctx.translate(spriteX, spriteY);
-
-    // Rotate the context by the bird's angle
-    ctx.rotate(spriteAngle);
-
-    // Draw the bird at its rotated position
-    ctx.drawImage(sprite, -sprite.width / 2, -sprite.height / 2);
-
-    ctx.restore(); // restore the context to its previous state
-}
-
-// Function to rotate the bird upwards
-function rotateUp() {
-    spriteAngle = -0.35; // about -20 degrees
-}
-
-// Function to rotate the bird downwards
-function rotateDown() {
-    spriteAngle = 1.57; // about 90 degrees
-}
-
-// Assuming 'window' is the object that receives the click event
-window.addEventListener('click', function() {
-    // Rotate the bird upwards when the window is clicked
-    rotateUp();
-
-    // After 200ms, rotate the bird downwards
-    setTimeout(rotateDown, 200);
-    console.log("click")
-});
-
-// Jump when spacebar is pressed
-window.addEventListener('keydown', function(e) {
-    if (e.code === 'Space') {
-            // Rotate the bird upwards when the window is clicked
-    rotateUp();
-
-    // After 200ms, rotate the bird downwards
-    setTimeout(rotateDown, 200);
-        console.log("space")
-    }
-}); 
 // Game loop
 // Update the game loop
 function loop() {
