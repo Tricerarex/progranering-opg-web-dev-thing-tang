@@ -128,34 +128,64 @@ function draw() {
 window.addEventListener('keydown', function(e) {
     if (e.code === 'Space') {
         sprite.dy = -sprite.jumpForce;
-        leftrotate
-        setTimeout(500)
-        rightrotate
+
     }
 }); 
 
-let n = 10
-let d = 10  
+var ctx = document.querySelector('canvas').getContext('2d');
 
-// Function that rotates string towards left by n
-function leftrotate(str1, n)
-{
-    var temp = str1 + str1;
-    var l1 = str1.length;
-     
-    var Lfirst = temp.substr(n,l1);
- 
-//     now returning string
-    return Lfirst;
+
+
+// The rotation angle of the bird, in radians
+var sprieAngle = 0;
+
+// Function to draw the bird
+function rotatesprite() {
+    ctx.save(); // save the current state of the context
+
+    // Translate to the bird's position
+    ctx.translate(spriteX, spriteY);
+
+    // Rotate the context by the bird's angle
+    ctx.rotate(spriteAngle);
+
+    // Draw the bird at its rotated position
+    ctx.drawImage(sprite, -sprite.width / 2, -sprite.height / 2);
+
+    ctx.restore(); // restore the context to its previous state
 }
 
-
-// Function that rotates string towards right by n
-function rightrotate(str, d)
-{
-    return leftrotate(str, str.length - d);
+// Function to rotate the bird upwards
+function rotateUp() {
+    spriteAngle = -0.35; // about -20 degrees
 }
 
+// Function to rotate the bird downwards
+function rotateDown() {
+    spriteAngle = 1.57; // about 90 degrees
+}
+
+// Assuming 'window' is the object that receives the click event
+window.addEventListener('click', function() {
+    // Rotate the bird upwards when the window is clicked
+    rotateUp();
+
+    // After 200ms, rotate the bird downwards
+    setTimeout(rotateDown, 200);
+    console.log("click")
+});
+
+// Jump when spacebar is pressed
+window.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+            // Rotate the bird upwards when the window is clicked
+    rotateUp();
+
+    // After 200ms, rotate the bird downwards
+    setTimeout(rotateDown, 200);
+        console.log("space")
+    }
+}); 
 // Game loop
 // Update the game loop
 function loop() {
