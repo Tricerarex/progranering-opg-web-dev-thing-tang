@@ -45,7 +45,7 @@ setInterval(function() {
         height: minHeight + Math.random() * (maxHeight - minHeight) - gapHeight,
         image: new Image()
     };
-    obstacleTop.image.src = '/imigas/watercolor-green-seaweed-png.png';  
+    obstacleTop.image.src = '/imigas/piper.png';  
     obstacles.push(obstacleTop);
 
     var obstacleBottom = {
@@ -55,7 +55,7 @@ setInterval(function() {
         height: canvas.height - obstacleTop.height - gapHeight,
         image: new Image()
     };
-    obstacleBottom.image.src = '/imigas/watercolor-green-seaweed-png.webp';  
+    obstacleBottom.image.src = '/imigas/pipe.png';  
     obstacles.push(obstacleBottom);
 }, 1000);
 
@@ -130,10 +130,33 @@ function draw() {
 window.addEventListener('keydown', function(e) {
     if (e.code === 'Space') {
         sprite.dy = -sprite.jumpForce;
+        leftrotate
+        setTimeout(500)
+        rightrotate
     }
 }); 
 
+let n = 10
+let d = 10  
 
+// Function that rotates string towards left by n
+function leftrotate(str1, n)
+{
+    var temp = str1 + str1;
+    var l1 = str1.length;
+     
+    var Lfirst = temp.substr(n,l1);
+ 
+//     now returning string
+    return Lfirst;
+}
+
+
+// Function that rotates string towards right by n
+function rightrotate(str, d)
+{
+    return leftrotate(str, str.length - d);
+}
 
 // Game loop
 // Update the game loop
