@@ -36,16 +36,29 @@ function drawObstacles() {
 setInterval(function() {
     var minHeight = 125; // Set this to your desired minimum height
     var maxHeight = 500; // Set this to your desired maximum height
-    var obstacle = {
+    var gapHeight = 200; // Set this to your desired gap height
+
+    var obstacleTop = {
         x: canvas.width,
-        y: minHeight + Math.random() * (maxHeight - minHeight),
+        y: 0,
         width: 100,
-        height: 500,
+        height: minHeight + Math.random() * (maxHeight - minHeight) - gapHeight,
         image: new Image()
     };
-    obstacle.image.src = '/imigas/watercolor-green-seaweed-png.webp';  
-    obstacles.push(obstacle);
+    obstacleTop.image.src = '/imigas/watercolor-green-seaweed-png.webp';  
+    obstacles.push(obstacleTop);
+
+    var obstacleBottom = {
+        x: canvas.width,
+        y: obstacleTop.height + gapHeight,
+        width: 100,
+        height: canvas.height - obstacleTop.height - gapHeight,
+        image: new Image()
+    };
+    obstacleBottom.image.src = '/imigas/watercolor-green-seaweed-png.webp';  
+    obstacles.push(obstacleBottom);
 }, 1000);
+
 
 
 
