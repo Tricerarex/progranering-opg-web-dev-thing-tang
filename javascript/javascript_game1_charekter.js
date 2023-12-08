@@ -66,7 +66,7 @@ function updateObstacles() {
     console.log(obstacles);
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
-        obstacle.x -= 5; // Adjust speed here
+        obstacle.x -= 10; // Adjust speed here
 
         // Remove the obstacle if it's off screen
         if (obstacle.x + obstacle.width < 0) {
