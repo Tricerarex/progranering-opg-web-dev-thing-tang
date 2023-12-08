@@ -36,7 +36,7 @@ function drawObstacles() {
 setInterval(function() {
     var minHeight = 125; // Set this to your desired minimum height
     var maxHeight = 500; // Set this to your desired maximum height
-    var gapHeight = 200; // Set this to your desired gap height
+    var gapHeight = 150; // Set this to your desired gap height
 
     var obstacleTop = {
         x: canvas.width,
@@ -45,7 +45,7 @@ setInterval(function() {
         height: minHeight + Math.random() * (maxHeight - minHeight) - gapHeight,
         image: new Image()
     };
-    obstacleTop.image.src = '/imigas/watercolor-green-seaweed-png.webp';  
+    obstacleTop.image.src = '/imigas/watercolor-green-seaweed-png.png';  
     obstacles.push(obstacleTop);
 
     var obstacleBottom = {
