@@ -36,7 +36,7 @@ function drawObstacles() {
 setInterval(function() {
     var minHeight = 125; // Set this to your desired minimum height
     var maxHeight = 500; // Set this to your desired maximum height
-    var gapHeight = 150; // Set this to your desired gap height
+    var gapHeight = 175; // Set this to your desired gap height
 
     var obstacleTop = {
         x: canvas.width,
@@ -93,17 +93,15 @@ function update() {
 }
 
 function checkCollision() {
-    for (var i = 0; i < obstacles.length; i++) {
-        var obstacle = obstacles[i];
-        var dx = sprite.x - Math.max(obstacle.x, Math.min(sprite.x, obstacle.x + obstacle.width));
-        var dy = sprite.y - Math.max(obstacle.y, Math.min(sprite.y, obstacle.y + obstacle.height));
-        if ((dx * dx + dy * dy) < (sprite.width * sprite.width)) {
-            // Collision detected with an obstacle
-            console.log("Collision detected with an obstacle!");
-            // Handle the collision
+    obstacles.forEach(obstacle => {
+        // Check for collision with obstacle
+        if (sprite.x < obstacle.x + obstacle.width &&
+            sprite.x + sprite.width > obstacle.x &&
+            sprite.y < obstacle.y + obstacle.height &&
+            sprite.y + sprite.height > obstacle.y) {
+                console.log("wowowowowowowowowo")
         }
-    }
-
+    });
     // Collision detection with the ground
     if (sprite.y + sprite.height > canvas.height) {
         console.log("Collision detected with the ground!");
