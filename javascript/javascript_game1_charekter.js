@@ -66,7 +66,7 @@ function updateObstacles() {
     console.log(obstacles);
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
-        obstacle.x -= 5; // Adjust speed here
+        obstacle.x -= 10; // Adjust speed here
 
         // Remove the obstacle if it's off screen
         if (obstacle.x + obstacle.width < 0) {
@@ -86,19 +86,37 @@ function update() {
     sprite.dy += gravity;
     sprite.y += sprite.dy;
 
+    // if (sprite.y + sprite.height > canvas.height) {
+    //     sprite.y = canvas.height - sprite.height;
+    //     sprite.dy = 0;
+    // }
+}
+
+function checkCollision() {
+    for (var i = 0; i < obstacles.length; i++) {
+        var obstacle = obstacles[i];
+        var dx = sprite.x - Math.max(obstacle.x, Math.min(sprite.x, obstacle.x + obstacle.width));
+        var dy = sprite.y - Math.max(obstacle.y, Math.min(sprite.y, obstacle.y + obstacle.height));
+        if ((dx * dx + dy * dy) < (sprite.width * sprite.width)) {
+            // Collision detected with an obstacle
+            console.log("Collision detected with an obstacle!");
+            // Handle the collision
+        }
+    }
+
+    // Collision detection with the ground
     if (sprite.y + sprite.height > canvas.height) {
-        sprite.y = canvas.height - sprite.height;
-        sprite.dy = 0;
+        console.log("Collision detected with the ground!");
+        // Handle the collision
+    }
+
+    // Collision detection with the sky
+    if (sprite.y < 0) {
+        console.log("Collision detected with the sky!");
+        // Handle the collision
     }
 }
 
-//pipe's
-let pipeArray = [];
-let pipeWidth =20
-let pipehigth = 50
-
-let top_pipe_img ;
-let bottom_pipe_img;
 
 
 
@@ -124,6 +142,7 @@ function loop() {
     updateObstacles();
     draw();
     drawObstacles();
+    checkCollision()
     requestAnimationFrame(loop);
 }
 
