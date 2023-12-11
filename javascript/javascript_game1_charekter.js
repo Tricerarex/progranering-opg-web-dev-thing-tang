@@ -100,6 +100,7 @@ function checkCollision() {
             sprite.y < obstacle.y + obstacle.height &&
             sprite.y + sprite.height > obstacle.y) {
                 console.log("wowowowowowowowowo")
+                
         }
     });
     // Collision detection with the ground
