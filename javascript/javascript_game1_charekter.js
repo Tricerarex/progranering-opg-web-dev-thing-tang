@@ -1,7 +1,7 @@
 
 // Define the obstacles array
 var obstacles = [];
-
+var points = 0;
 
 // Get the canvas element
 var canvas = document.getElementById('Game-window');
@@ -63,7 +63,6 @@ setInterval(function() {
 
 
 function updateObstacles() {
-    console.log(obstacles);
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
         obstacle.x -= 10; // Adjust speed here
@@ -72,6 +71,8 @@ function updateObstacles() {
         if (obstacle.x + obstacle.width < 0) {
             obstacles.splice(i, 1);
             i--;
+            points += 1;
+            console.log(points)
         }
     }
 }
@@ -99,20 +100,19 @@ function checkCollision() {
             sprite.x + sprite.width > obstacle.x &&
             sprite.y < obstacle.y + obstacle.height &&
             sprite.y + sprite.height > obstacle.y) {
-                console.log("wowowowowowowowowo")
-                
+                gameOver("obstacles")
         }
     });
     // Collision detection with the ground
     if (sprite.y + sprite.height > canvas.height) {
         console.log("Collision detected with the ground!");
-        // Handle the collision
+        gameOver("ground")
     }
 
     // Collision detection with the sky
     if (sprite.y < 0) {
         console.log("Collision detected with the sky!");
-        // Handle the collision
+        gameOver("sky")
     }
 }
 
@@ -132,6 +132,14 @@ window.addEventListener('keydown', function(e) {
 
     }
 }); 
+
+
+function gameOver(cause) {
+    // Convert points to a string
+
+    // Redirect to game over screen with points and cause as query parameters
+    window.location.href = "gameover.html?points=" + points + "&cause=" + cause;
+}
 
 
 // Game loop
