@@ -1,7 +1,8 @@
 
 // Define the obstacles array
 var obstacles = [];
-var points = 0;
+var points = 0;               
+var gameover1 = 0;
 
 // Get the canvas element
 var canvas = document.getElementById('Game-window');
@@ -135,10 +136,8 @@ window.addEventListener('keydown', function(e) {
 
 
 function gameOver(cause) {
-    // Convert points to a string
 
-    // Redirect to game over screen with points and cause as query parameters
-    window.location.href = "gameover.html?points=" + points + "&cause=" + cause;
+    gameover1 = cause
 }
 
 
@@ -149,9 +148,20 @@ function loop() {
     updateObstacles();
     draw();
     drawObstacles();
-    checkCollision()
+    checkCollision();
     requestAnimationFrame(loop);
 }
 
 // Start the game loop
+if (gameover1 == 0){
 loop();
+}
+else if (Gameover == "sky"){
+    //sky
+}
+else if(gameover1 == "ground") {
+    //ground
+}
+else if(gameover1 == "obstacles"){
+    //obstacles
+}
