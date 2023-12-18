@@ -6,22 +6,23 @@ canvas.height = innerHeight
 
 class Player {
     constructor() {
-        this.position = {
-            x: 200,
-            y: 200 
-        }
+
         this.velocity = {
             x: 0
         }
 
         this.image = new Image()
-        this.image.src = '/imigas/depositphotos_385102866-stock-illustration-american-fighter-raptor-vector-icon.png'
+        this.image.src = '/imigas/rsz_depositphotos_385102866-stock-illustration-american-fighter-raptor-vector-icon.png'
         this.image.onload = () => {
-            this.draw()
+            this.width = 100;
+            this.height = 100;
+            this.position = {
+                x: canvas.width / 2 - this.width / 2,
+                y: canvas.height - this.height / 2
+            };
+            this.draw();  
+            
         }
-
-        this.width = 100
-        this.height = 100 
     }
 
     draw() {
@@ -35,6 +36,7 @@ class Player {
 const player = new Player()
 player.draw()
 
+
 function animate(){
     requestAnimationFrame(animate)
     cxt.fillStyle = 'back'
@@ -42,5 +44,9 @@ function animate(){
     player.draw()
 
 }
+
+addEventListener('keydown', () => {
+    console.log('keydown')
+})
 
 animate()
