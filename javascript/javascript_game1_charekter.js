@@ -1,10 +1,9 @@
 
-//  Made it so 
 
 
 
 
-// Define the variables
+// Define the some variables
 var obstacles = [];
 var points = 0;               
 var gameover1 = 2;
@@ -19,7 +18,7 @@ var context = canvas.getContext('2d');
 // Set the gravity
 var gravity = 0.25;
 
-// Define the sprie object
+// Define the sprite object/ player / sprite
 var sprite = {
     x: canvas.width / 4,
     y: canvas.height / 2,
@@ -31,24 +30,30 @@ var sprite = {
 };
 
 
+// Start of code that Draws Obstacles
 function drawObstacles() {
-    context.fillStyle = 'red';
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
         context.drawImage(obstacle.image, obstacle.x, obstacle.y, obstacle.width, obstacle.height)
     }
 }
+// End of code that Draws Obstacles
 
+
+// Start of code that generate the obstacle's
 setInterval(function() {
-    var minHeight = 125; // Set this to your desired minimum height
-    var maxHeight = 500; // Set this to your desired maximum height
+    
+    //  Heighter number the more down it goes
+    
+    var maxHeight = 125; // Set this to your desired maximum height
+    var minHeight = 500; // Set this to your desired minimum height
     var gapHeight = 175; // Set this to your desired gap height
 
     var obstacleTop = {
         x: canvas.width,
         y: 0,
         width: 100,
-        height: minHeight + Math.random() * (maxHeight - minHeight) - gapHeight,
+        height: minHeight + Math.random() * (minHeight - maxHeight) - gapHeight,
         image: new Image()
     };
     obstacleTop.image.src = '/imigas/piper.png';  
@@ -64,7 +69,7 @@ setInterval(function() {
     obstacleBottom.image.src = '/imigas/pipe.png';  
     obstacles.push(obstacleBottom);
 }, 1000);
-//
+// End of code that generate the obstacle's
 
 
 //Start of 
