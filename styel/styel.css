@@ -21,9 +21,9 @@ main{
 }
   
 footer{
-  background-color: grey;
+  background-color: #424242;
   display: flex;
-  
+
   justify-content: center;
   flex-direction: row;
   align-items: center;
@@ -53,6 +53,7 @@ footer{
   margin-top: 16px;
   border: 2px solid darkgrey;
   border-top: 0px;
+  background-color: #424242;
 }
 
 .dropdown-content a {
