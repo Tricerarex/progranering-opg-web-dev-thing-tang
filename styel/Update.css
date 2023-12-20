@@ -1,0 +1,10 @@
+.update{
+    text-align: center;
+    box-shadow: 2px white solid;
+    color: #FF9999;
+    background-color: black;
+    border: 2px solid grey;
+    border-radius: 15px;
+    margin: 15px;
+    padding: 25px;
+}

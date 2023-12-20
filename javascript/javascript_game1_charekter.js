@@ -1,10 +1,15 @@
 
-// Define the obstacles array
+//  Made it so 
+
+
+
+
+// Define the variables
 var obstacles = [];
 var points = 0;               
 var gameover1 = 0;
 
-// Get the canvas element
+// Get the canvas element and info about it
 var canvas = document.getElementById('Game-window');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -78,22 +83,23 @@ function updateObstacles() {
     }
 }
 
+
+// makes sure the image is done loading before starting drawing pluss 
 sprite.image.onload = function() {
     context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
 sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
+// end of 
 
-// Update the sprite object
+// Update the sprite movment up and down
 function update() {
     sprite.dy += gravity;
     sprite.y += sprite.dy;
 
-    // if (sprite.y + sprite.height > canvas.height) {
-    //     sprite.y = canvas.height - sprite.height;
-    //     sprite.dy = 0;
-    // }
 }
+// end of updating sprite movment up and down
 
+//start of collision check code
 function checkCollision() {
     obstacles.forEach(obstacle => {
         // Check for collision with obstacle
@@ -101,22 +107,22 @@ function checkCollision() {
             sprite.x + sprite.width > obstacle.x &&
             sprite.y < obstacle.y + obstacle.height &&
             sprite.y + sprite.height > obstacle.y) {
-                gameOver("obstacles")
+                drawGameOverScreen("obstacles")
         }
     });
     // Collision detection with the ground
     if (sprite.y + sprite.height > canvas.height) {
         console.log("Collision detected with the ground!");
-        gameOver("ground")
+        drawGameOverScreen("ground")
     }
 
     // Collision detection with the sky
     if (sprite.y < 0) {
         console.log("Collision detected with the sky!");
-        gameOver("sky")
+        drawGameOverScreen("sky")
     }
 }
-
+// End of Collisision checking code
 
 
 
@@ -135,33 +141,48 @@ window.addEventListener('keydown', function(e) {
 }); 
 
 
-function gameOver(cause) {
-
-    gameover1 = cause
-}
-
-
 // Game loop
 // Update the game loop
 function loop() {
-    update();
-    updateObstacles();
-    draw();
-    drawObstacles();
-    checkCollision();
-    requestAnimationFrame(loop);
+    if(gameover1 == 0){
+        update();
+        updateObstacles();
+        draw();
+        drawObstacles();
+        checkCollision();
+        requestAnimationFrame(loop);
+    }
+    console.log(gameover1);
 }
+//start of reset button
+canvas.addEventListener('click', function(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    if (gameover1 != 0 && x > canvas.width/2-100 && x < canvas.width/2+100 && y > canvas.height/1.5 && y < canvas.height/1.5+100) {
+        location.reload();
+    }
+    //info from click, and info about restart button size
+    //console.log(x,y)
+    //console.log(canvas.width/2-100, canvas.height/1.5, canvas.width/2-100+200, canvas.height/1.5+100)
+});
+//end of restart button
 
-// Start the game loop
-if (gameover1 == 0){
+
+// Start of gameover screen
+function drawGameOverScreen(cause) {
+    context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    context.fillRect(0, 0, canvas.width, canvas.height);  
+    context.fillStyle = 'rgba(155, 155, 155, 1)';
+    context.fillRect(canvas.width/2-100, canvas.height/1.5, 200, 100); 
+    context.font = "50px Arial";
+    context.fillStyle = "red"; 
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillText("Restart", canvas.width/2, canvas.height/1.5+50);
+    gameover1 = 1;
+}
+// End of Game over screen
+
+
+
 loop();
-}
-else if (Gameover == "sky"){
-    //sky
-}
-else if(gameover1 == "ground") {
-    //ground
-}
-else if(gameover1 == "obstacles"){
-    //obstacles
-}
