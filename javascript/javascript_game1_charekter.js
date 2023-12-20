@@ -1,12 +1,8 @@
 
+// This was made by me Noah,
+// and some help by a Ai chat bot
+// Hope you like it
 
-
-
-
-// Define the some variables
-var obstacles = [];
-var points = 0;               
-var gameover1 = 2;
 
 // Get the canvas element and info about it
 var canvas = document.getElementById('Game-window');
@@ -15,30 +11,18 @@ canvas.height = window.innerHeight;
 var context = canvas.getContext('2d');
 
 
-// Set the gravity
-var gravity = 0.25;
 
-// Define the sprite object/ player / sprite
-var sprite = {
-    x: canvas.width / 4,
-    y: canvas.height / 2,
-    dy: 0,
-    width: 50,
-    height: 50,
-    jumpForce: 7,
-    image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
-};
+// Define some variables
+var obstacles = [];
+var points = 0;               
+var gameover1 = 2;
 
 
-// Start of code that Draws Obstacles
-function drawObstacles() {
-    for (var i = 0; i < obstacles.length; i++) {
-        var obstacle = obstacles[i];
-        context.drawImage(obstacle.image, obstacle.x, obstacle.y, obstacle.width, obstacle.height)
-    }
-}
-// End of code that Draws Obstacles
 
+
+
+
+// start of Functions for the Obstacles
 
 // Start of code that generate the obstacle's
 setInterval(function() {
@@ -72,7 +56,7 @@ setInterval(function() {
 // End of code that generate the obstacle's
 
 
-//Start of 
+//Start of Code that updates Obstacles
 function updateObstacles() {
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
@@ -87,18 +71,45 @@ function updateObstacles() {
         }
     }
 }
-//End of
+//End of Code that updates Obstacles
+// Start of code that Draws Obstacles
+function drawObstacles() {
+    for (var i = 0; i < obstacles.length; i++) {
+        var obstacle = obstacles[i];
+        context.drawImage(obstacle.image, obstacle.x, obstacle.y, obstacle.width, obstacle.height)
+    }
+}
+// End of code that Draws Obstacles
+
+// End of Functions for the Obstacles
+
+
+// Start of Functions for Sprite/Player
+
+// Set the gravity of Sprite/Player
+var gravity = 0.25;
+
+
+// Define the sprite object/ player / sprite
+var sprite = {
+    x: canvas.width / 4,
+    y: canvas.height / 2,
+    dy: 0,
+    width: 50,
+    height: 50,
+    jumpForce: 7,
+    image: new Image("/imigas/ab7d5fa02e5f513 copy.png")
+};
+
+// States what images Sprite/Plaayer is
+sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
 
 
 // makes sure the image is done loading before starting drawing pluss 
 sprite.image.onload = function() {
     context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
-// end of 
-
-
-// States what images Sprite/Plaayer is
-sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
+// end of code
 
 
 // Update the sprite movment up and down
@@ -108,6 +119,27 @@ function update() {
 
 }
 // end of updating sprite movment up and down
+
+
+// Start of Code that draw the player/Sprite
+function draw() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
+}
+// End of Code that draw the Player/Sprite
+
+
+// Start of Jump code
+window.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+        sprite.dy = -sprite.jumpForce;
+
+    }
+}); 
+// End of Jump code
+
+// end of Functions for Sprite/player
+
 
 //start of collision check code
 function checkCollision() {
@@ -135,42 +167,7 @@ function checkCollision() {
 // End of Collisision checking code
 
 
-
-// Start of Code that draw the player/Sprite
-function draw() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
-}
-// End of Code that draw the Player/Sprite
-
-
-// Start of Jump code
-window.addEventListener('keydown', function(e) {
-    if (e.code === 'Space') {
-        sprite.dy = -sprite.jumpForce;
-
-    }
-}); 
-// End of Jump code
-
-
-// Start of Game loop
-function loop() {
-    if(gameover1 == 0){
-        update();
-        updateObstacles();
-        draw();
-        drawObstacles();
-        checkCollision();
-        requestAnimationFrame(loop);
-        
-    }
-    else if(gameover1==2) {
-        drawStartScreen()
-    }
-}
-// End of Game loop
-
+// Start of function for start and Gameover Screens
 
 // Start of Reset code
 function reset(){
@@ -237,6 +234,26 @@ function drawStartScreen() {
     gameover1 = 2;
 }
 // End of start screen
+
+// Start of function for start and Gameover Screens
+
+
+// Start of Game loop
+function loop() {
+    if(gameover1 == 0){
+        update();
+        updateObstacles();
+        draw();
+        drawObstacles();
+        checkCollision();
+        requestAnimationFrame(loop);
+        
+    }
+    else if(gameover1==2) {
+        drawStartScreen()
+    }
+}
+// End of Game loop
 
 
 //Starts to run the whole code
