@@ -7,7 +7,7 @@
 // Define the variables
 var obstacles = [];
 var points = 0;               
-var gameover1 = 0;
+var gameover1 = 2;
 
 // Get the canvas element and info about it
 var canvas = document.getElementById('Game-window');
@@ -151,17 +151,37 @@ function loop() {
         drawObstacles();
         checkCollision();
         requestAnimationFrame(loop);
+        
     }
-    console.log(gameover1);
+    else if(gameover1==2) {
+        drawStartScreen()
+    }
 }
-//start of reset button
+
+function reset(){
+    obstacles = [];
+    points = 0;               
+    gameover1 = 0;
+    sprite.y = canvas.height / 2;
+    sprite.dy = 0;
+    gameover1 = 0
+    loop()
+}
+
+
+
+//start of reset/start button
 canvas.addEventListener('click', function(event) {
     var x = event.clientX;
     var y = event.clientY;
-    if (gameover1 != 0 && x > canvas.width/2-100 && x < canvas.width/2+100 && y > canvas.height/1.5 && y < canvas.height/1.5+100) {
-        location.reload();
+    if (gameover1 == 1 && x > canvas.width/2-100 && x < canvas.width/2+100 && y > canvas.height/1.5 && y < canvas.height/1.5+100) {
+        drawStartScreen();
     }
-    //info from click, and info about restart button size
+    if (gameover1 == 2 && x > canvas.width/2-100 && x < canvas.width/2+100 && y > canvas.height/1.5 && y < canvas.height/1.5+100) {
+        reset();
+        
+    }
+    //info from click, and info about the button size
     //console.log(x,y)
     //console.log(canvas.width/2-100, canvas.height/1.5, canvas.width/2-100+200, canvas.height/1.5+100)
 });
@@ -172,17 +192,35 @@ canvas.addEventListener('click', function(event) {
 function drawGameOverScreen(cause) {
     context.fillStyle = 'rgba(0, 0, 0, 0.5)';
     context.fillRect(0, 0, canvas.width, canvas.height);  
-    context.fillStyle = 'rgba(155, 155, 155, 1)';
-    context.fillRect(canvas.width/2-100, canvas.height/1.5, 200, 100); 
+    context.fillStyle = 'rgba(155, 155, 155, 0.75)';
+    context.fillRect(canvas.width/2-100, canvas.height/1.5+25, 200, 50); 
+    context.fillRect(canvas.width/2-100, canvas.height/8, 200, 60); 
+    context.fillRect(canvas.width/2-300, canvas.height/8+75, 600, 60);
     context.font = "50px Arial";
     context.fillStyle = "red"; 
     context.textAlign = "center";
     context.textBaseline = "middle";
     context.fillText("Restart", canvas.width/2, canvas.height/1.5+50);
+    context.fillText("Points:"+points/2, canvas.width/2, canvas.height/8+45);
+    context.fillText("Reason of death:"+cause, canvas.width/2, canvas.height/8+105);
     gameover1 = 1;
 }
 // End of Game over screen
 
+// Start of start screen
+function drawStartScreen() {
+    context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    context.fillRect(0, 0, canvas.width, canvas.height);  
+    context.fillStyle = 'rgba(155, 155, 155, 0.75)';
+    context.fillRect(canvas.width/2-100, canvas.height/1.5, 200, 100); 
+    context.font = "50px Arial";
+    context.fillStyle = "red"; 
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillText("Start", canvas.width/2, canvas.height/1.5+50);
+    gameover1 = 2;
+}
+// End of start screen
 
-
+//Starts to run the whole code
 loop();
