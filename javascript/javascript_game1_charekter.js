@@ -64,10 +64,10 @@ setInterval(function() {
     obstacleBottom.image.src = '/imigas/pipe.png';  
     obstacles.push(obstacleBottom);
 }, 1000);
+//
 
 
-
-
+//Start of 
 function updateObstacles() {
     for (var i = 0; i < obstacles.length; i++) {
         var obstacle = obstacles[i];
@@ -82,14 +82,19 @@ function updateObstacles() {
         }
     }
 }
+//End of
 
 
 // makes sure the image is done loading before starting drawing pluss 
 sprite.image.onload = function() {
     context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 };
-sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
 // end of 
+
+
+// States what images Sprite/Plaayer is
+sprite.image.src = '/imigas/ab7d5fa02e5f513 copy.png';
+
 
 // Update the sprite movment up and down
 function update() {
@@ -126,23 +131,25 @@ function checkCollision() {
 
 
 
-// Draw the sprite object
+// Start of Code that draw the player/Sprite
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height);
 }
+// End of Code that draw the Player/Sprite
 
-// Jump when spacebar is pressed
+
+// Start of Jump code
 window.addEventListener('keydown', function(e) {
     if (e.code === 'Space') {
         sprite.dy = -sprite.jumpForce;
 
     }
 }); 
+// End of Jump code
 
 
-// Game loop
-// Update the game loop
+// Start of Game loop
 function loop() {
     if(gameover1 == 0){
         update();
@@ -157,7 +164,10 @@ function loop() {
         drawStartScreen()
     }
 }
+// End of Game loop
 
+
+// Start of Reset code
 function reset(){
     obstacles = [];
     points = 0;               
@@ -167,7 +177,7 @@ function reset(){
     gameover1 = 0
     loop()
 }
-
+// End of Reset code
 
 
 //start of reset/start button
@@ -207,6 +217,7 @@ function drawGameOverScreen(cause) {
 }
 // End of Game over screen
 
+
 // Start of start screen
 function drawStartScreen() {
     context.fillStyle = 'rgba(0, 0, 0, 0.5)';
@@ -221,6 +232,7 @@ function drawStartScreen() {
     gameover1 = 2;
 }
 // End of start screen
+
 
 //Starts to run the whole code
 loop();
