@@ -37,7 +37,7 @@ setInterval(function() {
         x: canvas.width,
         y: 0,
         width: 100,
-        height: minHeight + Math.random() * (minHeight - maxHeight) - gapHeight,
+        height: maxHeight + Math.random() * (minHeight - maxHeight) - gapHeight,
         image: new Image()
     };
     obstacleTop.image.src = '/imigas/piper.png';  
@@ -216,7 +216,7 @@ function drawGameOverScreen(cause) {
     context.fillText("Points:"+points/2, canvas.width/2, canvas.height/8+45);
     context.fillText("Reason of death:"+cause, canvas.width/2, canvas.height/8+105);
     gameover1 = 1;
-}
+    }
 // End of Game over screen
 
 
@@ -236,7 +236,6 @@ function drawStartScreen() {
 // End of start screen
 
 // Start of function for start and Gameover Screens
-
 
 // Start of Game loop
 function loop() {
