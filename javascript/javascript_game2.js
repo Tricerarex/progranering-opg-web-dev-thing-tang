@@ -18,10 +18,12 @@ class Player {
             this.height = 100;
             this.position = {
                 x: canvas.width / 2 - this.width / 2,
-                y: canvas.height - this.height / 2
+                y: canvas.height - this.height
             };
             this.draw();  
-            
+            animate()
+            player.draw()
+
         }
     }
 
@@ -34,7 +36,6 @@ class Player {
 
 
 const player = new Player()
-player.draw()
 
 
 function animate(){
@@ -45,8 +46,18 @@ function animate(){
 
 }
 
-addEventListener('keydown', () => {
-    console.log('keydown')
+addEventListener('keydown', ({key}) => {
+    switch (key) {
+        case 'a':
+            console.log('<')
+            player.velocity.x = -5
+            break
+        case 'd':
+            console.log('>')
+            break
+        case ' ':
+            console.log('shot her!')
+            break
+    }
 })
 
-animate()
