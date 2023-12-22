@@ -1,0 +1,21 @@
+canvas{
+
+    width: 95%;
+    height: auto;
+    margin: 20px;
+    border: rgb(92, 92, 92) 3px solid;
+    border-radius: 5%;
+}
+
+/* Changes some style about Main */
+main{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+/* Adds a background image to the canvas/Game */
+#Game-window{
+    background-image: url();
+}
